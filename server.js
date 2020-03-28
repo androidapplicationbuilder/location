@@ -5,11 +5,10 @@ var cheerio = require('cheerio');
 var app     = express();
 var geoip = require('geoip-country');
 const port = process.env.PORT || 3000;
-app.get('/scrape/', function(req, res){
+app.get('/scrape/:id', function(req, res){
 
-     var ip =  req.ip;
+var ip = req.params.id;
   
-    console.log(ip);
    var geo = geoip.lookup(ip);
     res.send(geo.country);
   
